@@ -1,0 +1,30 @@
+<?php
+
+/*
+ * PHP Unison Fiber Framework
+ * https://github.com/php-puff/puff
+ * https://github.com/php-puff/puff/issues
+ * Copyright (c) Puff
+ */
+
+declare(strict_types=1);
+
+use Puff\Migration\Blueprint;
+use Puff\Migration\Migration;
+use Puff\Migration\Schema;
+
+return new class implements Migration {
+    public function up(Schema $schema): void
+    {
+        // Apply add_nickname_to_test.
+        $schema->table('test', static function (Blueprint $table): void {
+            $table->string('nickname');
+        });
+    }
+
+    public function down(Schema $schema): void
+    {
+        // Revert add_nickname_to_test.
+        // $schema->dropIfExists('table_name');
+    }
+};

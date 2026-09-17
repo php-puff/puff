@@ -1,0 +1,23 @@
+<?php
+
+/*
+ * PHP Unison Fiber Framework
+ * https://github.com/php-puff/puff
+ * https://github.com/php-puff/puff/issues
+ * Copyright (c) Puff
+ */
+
+declare(strict_types=1);
+
+namespace %NAMESPACE%;
+
+use Puff\Http\Request;
+use Puff\Http\Response;
+
+final class %CLASS%
+{
+    public function index(Request $request): Response
+    {
+        return response()->json([]);
+    }
+}

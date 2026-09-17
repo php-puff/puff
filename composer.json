@@ -1,0 +1,88 @@
+{
+    "name": "puff/puff",
+    "description": "A high-performance, Fiber-native application framework for PHP 8.2+",
+    "type": "application",
+    "keywords": [
+        "php",
+        "framework",
+        "puff",
+        "fiber",
+        "async",
+        "event-loop",
+        "concurrency",
+        "http-server",
+        "routing",
+        "middleware",
+        "high-performance"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "puff/application": "dev-main",
+        "puff/config": "dev-main",
+        "puff/database": "dev-main",
+        "puff/event": "dev-main",
+        "puff/http-server": "dev-main",
+        "puff/i18n": "dev-main",
+        "puff/jwt": "dev-main",
+        "eftec/bladeone": "^4.19",
+        "puff/logger": "dev-main",
+        "puff/view": "dev-main"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.22",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.0",
+        "puff/console": "dev-main",
+        "puff/migration": "dev-main",
+        "puff/seed": "dev-main"
+    },
+    "autoload": {
+        "files": [
+            "app/helper.php"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "Cmd\\": "cmd/",
+            "Database\\": "database/",
+            "Event\\": "event/",
+            "Job\\": "job/",
+            "Pipeline\\": "pipeline/",
+            "Service\\": "service/"
+        }
+    },
+    "extra": {
+        "puff": {
+            "providers": [
+                "App\\Provider\\EventServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "scripts": {
+        "post-create-project-cmd": "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+        "post-install-cmd": "Puff\\Config\\ConfigPublisher::publish",
+        "post-update-cmd": "Puff\\Config\\ConfigPublisher::publish",
+        "puff": "@php puff",
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php puff run --watch"
+        ],
+        "start": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php puff run"
+        ],
+        "benchmark": "@php tests/HttpBenchmark.php",
+        "test": "phpunit tests",
+        "format": "php-cs-fixer fix --config=.php-cs-fixer.dist.php",
+        "lint": "php-cs-fixer fix --dry-run --diff --config=.php-cs-fixer.dist.php",
+        "analyse": "phpstan analyse $(git ls-files --cached --others --exclude-standard -- 'app/*.php' 'app/**/*.php' 'cmd/*.php' 'config/*.php' 'database/Entity/*.php' 'database/Entity/**/*.php' 'database/Model/*.php' 'database/Model/**/*.php' 'provider/*.php') --level=8 --memory-limit=1G",
+        "check": "@lint"
+    }
+}

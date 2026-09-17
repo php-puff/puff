@@ -1,0 +1,5 @@
+composer.lock
+composer.local*
+vendor/
+!.gitignore
+!.dockerignore
