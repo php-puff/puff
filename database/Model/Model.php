@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Database\Model;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as BaseModel;
 
-final class Users extends Model
+class Model extends BaseModel
 {
 }
