@@ -27,6 +27,7 @@
         "puff/jwt": "dev-main",
         "eftec/bladeone": "^4.19",
         "puff/logger": "dev-main",
+        "puff/mcp-server": "dev-main",
         "puff/view": "dev-main"
     },
     "require-dev": {

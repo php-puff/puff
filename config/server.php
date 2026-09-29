@@ -56,4 +56,16 @@ return [
     //     'protocols' => [],
     // ],
 
+    // MCP over stateless Streamable HTTP.
+    [
+        'type' => 'mcp',
+        'addr' => '0.0.0.0:8120',
+        'path' => '/mcp',
+        'name' => 'Puff MCP Server',
+        'version' => '1.0.0',
+        'pipeline' => [
+            // App\Pipeline\Auth::class,
+        ],
+    ],
+
 ];
