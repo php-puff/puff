@@ -18,4 +18,5 @@ return [
     'cache' => \dirname(__DIR__) . '/runtime/i18n',
     'query' => 'i18n',
     'cookie' => 'i18n',
+    'lifetime' => 31_536_000,
 ];
